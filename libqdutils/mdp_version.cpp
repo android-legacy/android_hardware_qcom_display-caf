@@ -36,6 +36,25 @@
 ANDROID_SINGLETON_STATIC_INSTANCE(qdutils::MDPVersion);
 namespace qdutils {
 
+#ifndef MDSS_MDP_REV
+enum mdp_rev {
+    MDSS_MDP_HW_REV_100 = 0x10000000, //8974 v1
+    MDSS_MDP_HW_REV_101 = 0x10010000, //8x26
+    MDSS_MDP_HW_REV_102 = 0x10020000, //8974 v2
+    MDSS_MDP_HW_REV_103 = 0x10030000, //8084
+    MDSS_MDP_HW_REV_104 = 0x10040000, //Next version
+    MDSS_MDP_HW_REV_105 = 0x10050000, //Next version
+    MDSS_MDP_HW_REV_106 = 0x10060000, //8x16
+    MDSS_MDP_HW_REV_200 = 0x20000000, //8092
+    MDSS_MDP_HW_REV_206 = 0x20060000, //Future
+};
+#else
+enum mdp_rev {
+    MDSS_MDP_HW_REV_104 = 0x10040000, //Next version
+    MDSS_MDP_HW_REV_206 = 0x20060000, //Future
+    MDSS_MDP_HW_REV_107 = 0x10070000, //Next version
+};
+#endif
 MDPVersion::MDPVersion()
 {
     int fb_fd = open("/dev/graphics/fb0", O_RDWR);
